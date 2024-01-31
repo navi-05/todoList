@@ -5,11 +5,10 @@ import bodyParser from 'body-parser';
 // Database Connection
 const db = new pg.Client({
   // config
-  host: "localhost",
-  port: 5432,
-  password: 'aswidvaali',
-  user: 'postgres',
-  database: 'todoList'
+  connectionString: 'postgres://fmwpeznu:5n9WB3JWCVydOFtdP8lTtQVGXYJ1kIvf@arjuna.db.elephantsql.com/fmwpeznu',
+  password: '5n9WB3JWCVydOFtdP8lTtQVGXYJ1kIvf',
+  user: 'fmwpeznu',
+  database: 'fmwpeznu'
 })
 db.connect()
 
@@ -34,9 +33,7 @@ server.post("/add", async (req, res) => {
 // DELETE ENDPOINT
 server.post("/delete", async(req, res) => {
   const id = req.body.todo
-  
   await db.query(`DELETE FROM todos WHERE id = ${id}`)
-
   res.redirect('/')
 })
 
